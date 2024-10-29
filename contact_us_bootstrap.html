@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - IRSS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("image3.jpg"); /* Background image */
+            background-size: cover; /* Cover the entire body */
+            background-position: center;   
+            background-attachment: fixed; /* Fix the background image */
+            height: 100vh; /* Full height */
+            display: flex; /* Use flexbox for centering */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            font-family: Arial, sans-serif;
+            flex-direction: column; /* Allow navbar and form to stack vertically */
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center; /* Center the navbar items */
+            padding: 10px 0; /* Vertical padding */
+        }
+
+        .navbar a {
+            color: #fff; /* White text */
+            font-weight: bold;
+            text-decoration: none;
+            padding: 15px;
+            margin: 0 10px; /* Spacing between links */
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Light background on hover */
+        }
+
+        .contact-form {
+            background-color: rgba(0, 0, 0, 0.6); /* Increased transparency for the contact form */
+            padding: 15px; /* Reduced padding for smaller size */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+            color: #fff; /* Text color */
+            max-width: 400px; /* Set a smaller maximum width */
+            width: 90%; /* Full width with a maximum cap */
+            height: auto; /* Auto height for flexibility */
+            margin-top: 80px; /* Space for the navbar */
+        }
+
+        .contact-form h2 {
+            text-align: center; /* Center the header */
+            margin-bottom: 15px; /* Spacing */
+        }
+
+        .form-group {
+            margin-bottom: 10px; /* Spacing */
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Stack items vertically */
+        }
+
+        .form-group label {
+            display: block;
+            color: #fff; /* Label color */
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px; /* Reduced padding */
+            border: 1px solid rgba(255, 255, 255, 0.5); /* Light border with transparency */
+            border-radius: 5px;
+            font-size: 14px; /* Decreased font size */
+            background-color: rgba(255, 255, 255, 0.2); /* More transparent input background */
+            color: #fff; /* Input text color */
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.8); /* White placeholder text */
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px; /* Reduced minimum height for textarea */
+        }
+
+        .submit-btn {
+            background-color: #009f55; /* Button color */
+            color: #fff;
+            padding: 10px; /* Reduced padding for better touch targets */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px; /* Decreased font size */
+            cursor: pointer;
+            width: 100%; /* Full width button */
+        }
+
+        .submit-btn:hover {
+            background-color: #008e4e; /* Darker shade for hover effect */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Centered Navbar -->
+    <nav class="navbar">
+        <a href="index3_bootstrap.html">Dashboard</a>
+        <a href="alerts_bootstrap.html">Alerts</a>
+        <a href="manage_users_bootstrap.html">Manage Users</a>
+        <a href="settings_bootstrap.html">Settings</a>
+        <a href="contact_us_bootstrap.html">Contact Us</a>
+    </nav>
+
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form action="submit_form.php" method="POST">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name" title="Your full name">
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email" title="Your email address">
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required placeholder="Enter the subject" title="Subject of your message">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Write your message" title="Your message here"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        const images = [
+            "image1.jpg",
+            "image2.png",
+            "image3.jpg",
+            "image4.jpg"
+        ];
+    
+        let currentIndex = 0;
+    
+        function changeBackgroundImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
+        }
+    
+        // Change background every 4 seconds
+        setInterval(changeBackgroundImage, 4000);
+    
+    </script>
+
+</body>
+</html>

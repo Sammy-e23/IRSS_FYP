@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Detection Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            transition: background-image 1s ease-in-out;
+        }
+
+        /* Center-aligned Transparent Navbar */
+        .navbar {
+            background-color: rgba(52, 58, 64, 0.7); /* Transparent background */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center; /* Center-align the navbar */
+        }
+
+        .navbar a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 15px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .user-management-container {
+            background-color: rgba(30, 30, 30, 0.5);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            color: #fff;
+            margin-top: 80px; /* Adjusted for navbar space */
+        }
+
+        .user-management-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-management-header h2 {
+            margin: 0;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #fff;
+        }
+
+        .input-group input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            font-size: 14px;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.2);
+            box-sizing: border-box;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .input-group .new-password-label {
+            margin-top: 15px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .manage-btn {
+            width: 40%;
+            padding: 10px;
+            background-color: #009f55;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 0 8px;
+        }
+
+        .manage-btn:hover {
+            background-color: #008e4e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Center-aligned Transparent Navbar -->
+    <nav class="navbar">
+        <a href="index3_bootstrap.html">Dashboard</a>
+        <a href="alerts_bootstrap.html">Alerts</a>
+        <a href="manage_users_bootstrap.html">Manage Users</a>
+        <a href="settings_bootstrap.html">Settings</a>
+        <a href="contact_us_bootstrap.html">Contact Us</a>
+        
+    </nav>
+
+    <div class="user-management-container">
+        <div class="user-management-header">
+            <h2>User Management</h2>
+        </div>
+
+        <!-- Add User -->
+        <div class="input-group">
+            <label for="new-username">Add New User</label>
+            <input type="text" id="new-username" placeholder="Enter new username" required>
+        </div>
+        <div class="button-container">
+            <button class="manage-btn" onclick="addUser()">Add User</button>
+        </div>
+
+        <!-- Remove User -->
+        <div class="input-group">
+            <label for="remove-username">Remove User</label>
+            <input type="text" id="remove-username" placeholder="Enter username to remove" required>
+        </div>
+        <div class="button-container">
+            <button class="manage-btn" onclick="removeUser()">Remove User</button>
+        </div>
+
+        <!-- Change Password -->
+        <div class="input-group">
+            <label for="change-username">Change Password for User</label>
+            <input type="text" id="change-username" placeholder="Enter username" required>
+            <label for="new-password" class="new-password-label">New Password</label>
+            <input type="password" id="new-password" placeholder="Enter new password" required>
+        </div>
+        <div class="button-container">
+            <button class="manage-btn" onclick="changePassword()">Change Password</button>
+        </div>
+    </div>
+
+    <script>
+        function addUser() {
+            const username = document.getElementById("new-username").value;
+            alert(`User ${username} has been added.`);
+            document.getElementById("new-username").value = ''; // Clear the input
+        }
+
+        function removeUser() {
+            const username = document.getElementById("remove-username").value;
+            alert(`User ${username} has been removed.`);
+            document.getElementById("remove-username").value = ''; // Clear the input
+        }
+
+        function changePassword() {
+            const username = document.getElementById("change-username").value;
+            const newPassword = document.getElementById("new-password").value;
+            alert(`Password for user ${username} has been changed to: ${newPassword}`);
+            document.getElementById("change-username").value = ''; // Clear the input
+            document.getElementById("new-password").value = ''; // Clear the input
+        }
+
+        const images = [
+            "image1.jpg",
+            "image2.png",
+            "image3.jpg",
+            "image4.jpg"
+        ];
+
+        let currentIndex = 0;
+
+        function changeBackgroundImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
+        }
+
+        // Change background every 4 seconds
+        setInterval(changeBackgroundImage, 4000);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* Global Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    z-index: 100;
+}
+
+.nav-link.active {
+    color: #007bff !important;
+    font-weight: bold;
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+/* Video Feed Section */
+#video-container {
+    position: relative;
+}
+
+#detection-status {
+    padding: 0.5rem;
+}
+
+.list-group-item {
+    font-size: 1.1rem;
+}
+
+/* Footer */
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

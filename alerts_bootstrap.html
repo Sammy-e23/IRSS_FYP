@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts History - IRSS System</title>
+    <link rel="stylesheet" href="style3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Centering vertically */
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            transition: background-image 1s ease-in-out;
+            flex-direction: column; /* Allow navbar and container to stack vertically */
+        }
+
+        /* Center-aligned Transparent Navbar */
+        .navbar {
+            background-color: rgba(52, 58, 64, 0.7); /* Transparent background */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center; /* Center-align the navbar */
+        }
+
+        .navbar a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 15px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .alerts-container {
+            background-color: rgba(0, 0, 0, 0.5); /* Fully transparent with light black */
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Slightly darker shadow for contrast */
+            max-width: 1000px;
+            width: 100%;
+            margin-top: 80px; /* Adjusted for navbar space */
+            color: #fff; /* White text for better visibility */
+            text-align: center; /* Center-align the text within the container */
+        }
+
+        .alerts-header {
+            margin-bottom: 30px;
+        }
+
+        .alerts-header h2 {
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Allows wrapping of filter elements */
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centering filter group */
+            margin: 0 10px; /* Spacing around filter groups */
+        }
+
+        .filter-group label {
+            font-weight: bold;
+            color: #fff; /* White color for better visibility */
+            margin-bottom: 5px;
+        }
+
+        .filter-group input {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #d1d5db;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            color: #fff; /* White text for better visibility */
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.2); /* Light transparent background for header */
+            font-weight: bold;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #fff; /* White color for better visibility */
+            margin-top: 20px;
+        }
+
+        /* Button */
+        .filter-btn {
+            background-color: #009f55; /* Green background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px; /* Adding some margin to the button */
+        }
+
+        .filter-btn:hover {
+            background-color: #009f55; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Center-aligned Transparent Navbar -->
+    <nav class="navbar">
+        <a href="index3_bootstrap.html">Dashboard</a>
+        <a href="alerts_bootstrap.html">Alerts</a>
+        <a href="manage_users_bootstrap.html">Manage Users</a>
+        <a href="settings_bootstrap.html">Settings</a>
+        <a href="contact_us_bootstrap.html">Contact Us</a>
+        
+    </nav>
+
+    <div class="alerts-container">
+        <div class="alerts-header">
+            <h2>Alerts History</h2>
+            <p>View records of all detection alerts triggered by the <b>IRSS System</b></p>
+        </div>
+
+        <!-- Date Filter -->
+        <div class="filters">
+            <div class="filter-group">
+                <label for="dateFilter">Filter by Date:</label>
+                <input type="date" id="dateFilter" name="dateFilter">
+            </div>
+            <button class="filter-btn" onclick="applyDateFilter()">Apply Filter</button>
+        </div>
+
+        <!-- Alerts Table -->
+        <table id="alertsTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Alert Type</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody id="alertsTableBody">
+                <!-- Sample data, will be dynamically updated -->
+                <tr>
+                    <td>2024-09-25</td>
+                    <td>14:30</td>
+                    <td>Weapon Detection</td>
+                    <td>Suspicious weapon detected in vehicle</td>
+                    <td>Main Street, Block B</td>
+                </tr>
+                <tr>
+                    <td>2024-09-25</td>
+                    <td>16:45</td>
+                    <td>Fire Detection</td>
+                    <td>Fire outbreak near parking area</td>
+                    <td>Sector A, 3rd Avenue</td>
+                </tr>
+                <tr>
+                    <td>2024-09-24</td>
+                    <td>09:15</td>
+                    <td>Face Detection</td>
+                    <td>Unauthorized face detected in vehicle</td>
+                    <td>Highway 21, Exit 12</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- No data message (initially hidden) -->
+        <p id="noDataMessage" class="no-data" style="display:none;">No alerts available for the selected date.</p>
+
+    </div>
+
+    <script>
+        function applyDateFilter() {
+            const filterDate = document.getElementById('dateFilter').value;
+            const tableBody = document.getElementById('alertsTableBody');
+            const noDataMessage = document.getElementById('noDataMessage');
+
+            let rows = tableBody.querySelectorAll('tr');
+            let hasData = false;
+
+            // Loop through table rows and show/hide based on the filter
+            rows.forEach(row => {
+                const dateCell = row.querySelector('td:first-child').textContent;
+
+                if (dateCell === filterDate) {
+                    row.style.display = ''; // Show matching rows
+                    hasData = true;
+                } else {
+                    row.style.display = 'none'; // Hide non-matching rows
+                }
+            });
+
+            // Show "No data" message if no matching rows
+            if (!hasData) {
+                noDataMessage.style.display = 'block';
+            } else {
+                noDataMessage.style.display = 'none';
+            }
+        }
+    </script>
+
+<script>
+    const images = [
+        "image1.jpg",
+        "image2.png",
+        "image3.jpg",
+        "image4.jpg"
+    ];
+
+    let currentIndex = 0;
+
+    function changeBackgroundImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
+    }
+
+    // Change background every 4 seconds
+    setInterval(changeBackgroundImage, 4000);
+
+</script>
+
+</body>
+</html>

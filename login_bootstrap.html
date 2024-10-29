@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRSS Login</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: background-image 1s ease-in-out; /* Smooth transition between images */
+        }
+
+        .login-form {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 5px;
+            color: #fff;
+            max-width: 400px;
+            width: 100%;
+            margin-top: 80px; /* Ensures space below the navbar */
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .footer-links {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+            color: rgb(255, 255, 255);
+            transform: scale(1.05);
+        }
+
+        .btn-custom {
+            background-color: #009f55;
+            color: #fff;
+            width: 100%;
+        }
+
+        .btn-custom:hover {
+            background-color: #008e4e;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+
+        .navbar-nav {
+            margin: 0 auto;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: #fff;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+
+    <div class="login-form">
+        <h2>IRSS Login</h2>
+        <form>
+            <div class="form-group">
+                <label for="username">Email</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter Email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter Password">
+            </div>
+            <div class="btn-container">
+                <button type="submit" class="btn btn-custom">Login</button>
+            </div>
+        </form>
+
+        <div class="footer-links">
+            <span>Forgot your password? </span><a href="forget_password_bootstrap.html">Reset it here</a><br>
+            <span>Don't have an account? <a href="signup_bootstrap.html">Create your account</a></span>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            "image1.jpg",
+            "image2.png",
+            "image3.jpg",
+            "image4.jpg"
+        ];
+
+        let currentIndex = 0;
+
+        function changeBackgroundImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
+        }
+
+        // Change background every 4 seconds
+        setInterval(changeBackgroundImage, 4000);
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

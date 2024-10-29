@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP - Detection Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url("image3.jpg"); /* Background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Center-aligned Transparent Navbar */
+        .navbar {
+            background-color: rgba(52, 58, 64, 0.5); /* Transparent navbar */
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+            justify-content: center; /* Center-align the navbar */
+        }
+
+        .navbar-nav {
+            flex-direction: row;
+        }
+
+        .navbar-nav a {
+            color: #fff;
+            font-weight: bold;
+            margin-right: 20px; /* Space between links */
+        }
+
+        .otp-container {
+            background-color: rgba(30, 30, 30, 0.5); /* Transparent background */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            color: #fff;
+            margin: auto;
+            margin-top: 80px; /* Adjust margin for navbar */
+        }
+
+        .otp-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .otp-header h2 {
+            font-weight: 700;
+            margin: 0;
+            color: #fff;
+        }
+
+        .otp-header p {
+            color: #fff; /* Bold white color */
+            font-weight: bold;
+            transition: color 0.3s; /* Smooth color transition */
+        }
+
+        .otp-header p:hover {
+            color: #ffeb3b; /* Hover effect: yellow text */
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #fff;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            font-size: 14px;
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .otp-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #009f55;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .otp-btn:hover {
+            background-color: #008e4e;
+        }
+    </style>
+
+    <script>
+        function handleOTPVerification(event) {
+            event.preventDefault();
+
+            const enteredOTP = document.getElementById('otp').value;
+            const storedOTP = sessionStorage.getItem('generatedOTP');
+
+            if (enteredOTP === storedOTP) {
+                alert("OTP verified successfully!");
+                window.location.href = 'dashboard.html';
+            } else {
+                alert("Invalid OTP. Please try again.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Transparent Center-aligned Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid justify-content-center"> <!-- Center the content in the container -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index3_bootstrap.html">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="alerts_bootstrap.html">Alerts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="manage_users_bootstrap.html">Manage Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="settings_bootstrap.html">Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact_us_bootstrap.html">Contact Us</a>
+                </li>
+               
+            </ul>
+        </div>
+    </nav>
+
+    <!-- OTP Verification Form -->
+    <div class="otp-container">
+        <div class="otp-header">
+            <h2>Enter OTP</h2>
+            <p>A 6-digit OTP has been sent to your email</p>
+        </div>
+
+        <form onsubmit="handleOTPVerification(event)">
+            <div class="input-group">
+                <label for="otp">OTP</label>
+                <input type="text" id="otp" name="otp" placeholder="Enter OTP" required maxlength="6">
+            </div>
+
+            <button type="submit" class="otp-btn">Verify OTP</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+const images = [
+            "image1.jpg",
+            "image2.png",
+            "image3.jpg",
+            "image4.jpg"
+        ];
+
+        let currentIndex = 0;
+
+        function changeBackgroundImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
+        }
+
+        // Change background every 4 seconds
+        setInterval(changeBackgroundImage, 4000);
+
+
+</script>
+</body>
+</html>
